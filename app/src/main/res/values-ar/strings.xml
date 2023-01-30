@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">مستكشف الكويكبات</string>
+    <string name="next_week_asteroids">كويكبات الأسبوع القادم</string>
+    <string name="today_asteroids">كويكبات اليوم</string>
+    <string name="saved_asteroids">الكويكبات المحفوظة</string>
+    <string name="image_of_the_day">صورة اليوم</string>
 </resources>
