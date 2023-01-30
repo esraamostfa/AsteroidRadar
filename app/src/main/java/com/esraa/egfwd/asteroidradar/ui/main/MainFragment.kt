@@ -32,6 +32,9 @@ class MainFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+        val adapter = AsteroidRecyclerViewAdepter()
+        binding.asteroidRecycler.adapter = adapter
+
         return binding.root
 
         }
