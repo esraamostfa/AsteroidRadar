@@ -6,14 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import com.esraa.egfwd.asteroidradar.AsteroidApplication
 import com.esraa.egfwd.asteroidradar.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
 
+    private val application: AsteroidApplication by lazy {
+        activity?.application as AsteroidApplication
+    }
+
     private val viewModel: MainViewModel by lazy {
-        ViewModelProvider(this)[MainViewModel::class.java]
+        ViewModelProvider(this,
+            MainViewModelFactory(application.repository))[MainViewModel::class.java]
     }
 
     override fun onCreateView(
