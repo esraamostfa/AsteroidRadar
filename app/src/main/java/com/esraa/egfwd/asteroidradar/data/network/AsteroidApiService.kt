@@ -7,7 +7,7 @@ import com.squareup.moshi.Moshi
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Query
+import java.util.*
 
 
 private val moshi = Moshi.Builder()
@@ -16,13 +16,16 @@ private val moshi = Moshi.Builder()
 
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
-    .baseUrl(BASE_URL)
+     .baseUrl(BASE_URL)
     .build()
 
 
 interface AsteroidApiService {
     @GET("planetary/apod?api_key=$API_KEY")
     suspend fun getImageOfDay(): ImageOfDay?
+
+    @GET("neo/rest/v1/feed?api_key=$API_KEY")
+    suspend fun getAsteroids(): AsteroidsResponse
 }
 
 
