@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.esraa.egfwd.asteroidradar.data.local.DBAsteroid
 import com.esraa.egfwd.asteroidradar.databinding.AsteroidItemBinding
 
-class AsteroidRecyclerViewAdepter: ListAdapter<DBAsteroid, AsteroidRecyclerViewAdepter.ViewHolder>(AsteroidDiffCallBack) {
+class AsteroidRecyclerViewAdepter(private val clickListener: AsteroidClickListener): ListAdapter<DBAsteroid, AsteroidRecyclerViewAdepter.ViewHolder>(AsteroidDiffCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(AsteroidItemBinding.inflate(LayoutInflater.from(parent.context)))
@@ -16,7 +16,11 @@ class AsteroidRecyclerViewAdepter: ListAdapter<DBAsteroid, AsteroidRecyclerViewA
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val item = getItem(position)
+        holder.bind(item)
+        holder.itemView.setOnClickListener{
+            clickListener.onClick(item)
+        }
     }
 
     class ViewHolder(private val binding: AsteroidItemBinding): RecyclerView.ViewHolder(binding.root) {
@@ -34,6 +38,10 @@ class AsteroidRecyclerViewAdepter: ListAdapter<DBAsteroid, AsteroidRecyclerViewA
         override fun areContentsTheSame(oldItem: DBAsteroid, newItem: DBAsteroid): Boolean {
             return oldItem.id == newItem.id
         }
+    }
+
+    class AsteroidClickListener(val clickListener: (asteroid: DBAsteroid) -> Unit) {
+        fun onClick(asteroid: DBAsteroid) = clickListener(asteroid)
     }
 
 }

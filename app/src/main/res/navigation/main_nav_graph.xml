@@ -15,5 +15,10 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.esraa.egfwd.asteroidradar.ui.detail.DetailFragment"
-        android:label="DetailFragment" />
+        android:label="DetailFragment"
+        >
+        <argument
+            android:name="selectedAsteroid"
+            app:argType="com.esraa.egfwd.asteroidradar.data.local.DBAsteroid"/>
+    </fragment>
 </navigation>

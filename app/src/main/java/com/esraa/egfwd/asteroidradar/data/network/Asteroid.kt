@@ -39,8 +39,8 @@ fun List<Asteroid>.asDBAsteroid() : List<DBAsteroid> {
             closeApproachDate = it.closeApproachDate.toString(),
             relativeVelocity= it.relativeVelocityPerSecond.toString(),
             missDistance = it.missDistanceAstro.toString(),
-            absoluteMagnitude = it.absoluteMagnitude,
-            estimatedDiameter= it.estimatedDiameterMax?:0.0,
+            absoluteMagnitude = it.absoluteMagnitude.toString(),
+            estimatedDiameter= it.estimatedDiameterMax.toString(),
             isPotentiallyHazardous = it.isPotentiallyHazardous
 
         )

@@ -4,6 +4,7 @@ import android.opengl.Visibility
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -48,3 +49,32 @@ fun ProgressBar.setVisibility(apiStatus: MainViewModel.APIStatus) {
         visibility = View.GONE
     }
 }
+
+@BindingAdapter("asteroidStatusImage")
+fun bindAsteroidStatusImage(image: ImageView, asteroidStatus: Boolean) {
+    if (asteroidStatus) {
+        image.setImageResource(R.drawable.asteroid_hazardous)
+    } else {
+        image.setImageResource(R.drawable.asteroid_safe)
+    }
+}
+
+@BindingAdapter("astronomicalUnitText")
+fun bindTextViewToAstronomicalUnit(textView: TextView, number: String) {
+    val context = textView.context
+    textView.text = String.format(context.getString(R.string.astronomical_unit_format), number)
+}
+
+@BindingAdapter("kmUnitText")
+fun bindTextViewToKmUnit(textView: TextView, number: String) {
+    val context = textView.context
+    textView.text = String.format(context.getString(R.string.km_unit_format), number)
+}
+
+@BindingAdapter("velocityText")
+fun bindTextViewToDisplayVelocity(textView: TextView, number: String) {
+    val context = textView.context
+    textView.text = String.format(context.getString(R.string.km_s_unit_format), number)
+}
+
+

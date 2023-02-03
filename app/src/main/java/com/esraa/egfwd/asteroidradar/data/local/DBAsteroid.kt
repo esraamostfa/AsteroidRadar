@@ -1,11 +1,14 @@
 package com.esraa.egfwd.asteroidradar.data.local
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
 
 @Entity
+@Parcelize
 data class DBAsteroid(
 
     @PrimaryKey
@@ -22,11 +25,11 @@ data class DBAsteroid(
     val missDistance: String,
 
     @ColumnInfo(name = "absolute_magnitude")
-    val absoluteMagnitude: Double,
+    val absoluteMagnitude: String,
 
     @ColumnInfo(name = "estimated_diameter")
-    val estimatedDiameter:Double,
+    val estimatedDiameter:String,
 
     @ColumnInfo(name = "is_potentially_hazardous_asteroid")
     val isPotentiallyHazardous: Boolean
-)
+) : Parcelable

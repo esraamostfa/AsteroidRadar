@@ -68,4 +68,18 @@ class MainViewModel(private val repository: AsteroidRepository)  : ViewModel() {
             }
         }
     }
+
+
+    private val _navigateToSelectedAsteroid = MutableLiveData<DBAsteroid?>()
+
+    val navigateToSelectedAsteroid: LiveData<DBAsteroid?>
+        get() = _navigateToSelectedAsteroid
+
+    fun displayAsteroidDetails(asteroid: DBAsteroid) {
+        _navigateToSelectedAsteroid.value = asteroid
+    }
+
+    fun displayAsteroidDetailsComplete() {
+        _navigateToSelectedAsteroid.value = null
+    }
 }
