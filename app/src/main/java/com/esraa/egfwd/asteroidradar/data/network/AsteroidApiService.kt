@@ -2,8 +2,8 @@ package com.esraa.egfwd.asteroidradar.data.network
 
 import com.esraa.egfwd.asteroidradar.Constants.API_KEY
 import com.esraa.egfwd.asteroidradar.Constants.BASE_URL
-import com.esraa.egfwd.asteroidradar.data.models.ImageOfDay
 import com.squareup.moshi.Moshi
+import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET

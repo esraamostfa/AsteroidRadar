@@ -1,5 +1,6 @@
-package com.esraa.egfwd.asteroidradar.data.models
+package com.esraa.egfwd.asteroidradar.data.network
 
+import com.esraa.egfwd.asteroidradar.data.local.DBAsteroid
 import com.squareup.moshi.Json
 
 data class Asteroid(
@@ -24,8 +25,25 @@ data class Asteroid(
     val missDistanceAstro = this.missDistance["astronomical"]
     private val relativeVelocity = closeApproachData[0]["relative_velocity"] as Map<*, *>
     val relativeVelocityPerSecond = this.relativeVelocity["kilometers_per_second"]
+    val closeApproachDate = closeApproachData[0]["close_approach_date"]
 
 
 
+}
+
+fun List<Asteroid>.asDBAsteroid() : List<DBAsteroid> {
+    return map {
+        DBAsteroid(
+            id = it.id,
+            codename = it.codename,
+            closeApproachDate = it.closeApproachDate.toString(),
+            relativeVelocity= it.relativeVelocityPerSecond.toString(),
+            missDistance = it.missDistanceAstro.toString(),
+            absoluteMagnitude = it.absoluteMagnitude,
+            estimatedDiameter= it.estimatedDiameterMax?:0.0,
+            isPotentiallyHazardous = it.isPotentiallyHazardous
+
+        )
+    }
 }
 

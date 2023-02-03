@@ -6,22 +6,45 @@
     <data>
         <variable
             name="asteroid"
-            type="com.esraa.egfwd.asteroidradar.data.models.Asteroid" />
+            type="com.esraa.egfwd.asteroidradar.data.local.DBAsteroid" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingVertical="@dimen/basic_margin">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/name"
+            style="@style/TextAppearance.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="TextView"
             android:text="@{asteroid.codename}"
+            app:layout_constraintBottom_toTopOf="@+id/date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="TextView" />
+
+        <TextView
+            android:id="@+id/date"
+            style="@style/TextAppearance.SubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{asteroid.closeApproachDate}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            tools:text="TextView" />
+
+        <ImageView
+            android:id="@+id/hazardous_status_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:hazardousImage="@{asteroid}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/name"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/ic_status_potentially_hazardous" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

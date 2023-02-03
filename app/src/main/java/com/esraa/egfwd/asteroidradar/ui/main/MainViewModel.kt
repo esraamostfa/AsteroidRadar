@@ -3,8 +3,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.esraa.egfwd.asteroidradar.data.models.Asteroid
-import com.esraa.egfwd.asteroidradar.data.models.ImageOfDay
+import com.esraa.egfwd.asteroidradar.data.local.DBAsteroid
+import com.esraa.egfwd.asteroidradar.data.network.ImageOfDay
 import com.esraa.egfwd.asteroidradar.data.repository.AsteroidRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -15,21 +15,17 @@ class MainViewModel(private val repository: AsteroidRepository)  : ViewModel() {
     val imageOfDay: LiveData<ImageOfDay>
     get() = _imageOfDay
 
-    private val _asteroids = MutableLiveData<List<Asteroid>>()
-    val asteroids: LiveData<List<Asteroid>>
-    get() = _asteroids
+     val asteroids = repository.asteroids
 
     init {
-        Timber.i("MainViewModel was initialized")
         getImageOfDay()
-        getAsteroids()
+        refreshAsteroids()
     }
 
-    private fun getAsteroids() {
+    private fun refreshAsteroids() {
         viewModelScope.launch {
             try {
-
-                _asteroids.value = repository.getAsteroids()
+                repository.refreshAsteroids()
 
             } catch (e: java.lang.Exception) {
                 Timber.e(e.toString())

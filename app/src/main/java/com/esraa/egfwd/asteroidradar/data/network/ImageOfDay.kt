@@ -1,4 +1,4 @@
-package com.esraa.egfwd.asteroidradar.data.models
+package com.esraa.egfwd.asteroidradar.data.network
 
 import com.squareup.moshi.Json
 

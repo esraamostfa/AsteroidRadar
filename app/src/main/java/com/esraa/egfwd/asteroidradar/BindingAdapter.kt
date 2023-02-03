@@ -4,7 +4,7 @@ import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.esraa.egfwd.asteroidradar.data.models.Asteroid
+import com.esraa.egfwd.asteroidradar.data.local.DBAsteroid
 import com.esraa.egfwd.asteroidradar.ui.main.AsteroidRecyclerViewAdepter
 import com.squareup.picasso.Picasso
 
@@ -21,7 +21,16 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 }
 
 @BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView, data: List<Asteroid>?) {
+fun bindRecyclerView(recyclerView: RecyclerView, data: List<DBAsteroid>?) {
     val adapter = recyclerView.adapter as AsteroidRecyclerViewAdepter
     adapter.submitList(data)
+}
+
+@BindingAdapter("hazardousImage")
+fun bindHazardousIcon(image: ImageView, asteroid: DBAsteroid) {
+    if (asteroid.isPotentiallyHazardous) {
+        image.setImageResource(R.drawable.ic_status_potentially_hazardous)
+    } else {
+        image.setImageResource(R.drawable.ic_status_normal)
+    }
 }
