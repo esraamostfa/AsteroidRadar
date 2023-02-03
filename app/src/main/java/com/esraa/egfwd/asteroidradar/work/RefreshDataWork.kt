@@ -14,8 +14,8 @@ class RefreshDataWorker( private val repository: AsteroidRepository, appContext:
 
     override suspend fun doWork(): Result {
         return try {
-
             repository.refreshAsteroids()
+            repository.refreshImageOfDay()
             Result.success()
         } catch (e: HttpException){
             Result.retry()
