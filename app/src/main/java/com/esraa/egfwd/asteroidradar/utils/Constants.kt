@@ -1,4 +1,4 @@
-package com.esraa.egfwd.asteroidradar
+package com.esraa.egfwd.asteroidradar.utils
 
 object Constants {
     const val API_QUERY_DATE_FORMAT = "yyyy-MM-dd"

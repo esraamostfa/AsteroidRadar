@@ -1,12 +1,10 @@
 package com.esraa.egfwd.asteroidradar.data.repository
-import android.util.Log
 import com.esraa.egfwd.asteroidradar.data.local.AsteroidDao
 import com.esraa.egfwd.asteroidradar.data.local.DBAsteroid
 import com.esraa.egfwd.asteroidradar.data.network.AsteroidApi
 import com.esraa.egfwd.asteroidradar.data.network.ImageOfDay
 import com.esraa.egfwd.asteroidradar.data.network.asDBAsteroid
 import com.esraa.egfwd.asteroidradar.today
-import com.esraa.egfwd.asteroidradar.weekDates
 import com.esraa.egfwd.asteroidradar.weekDatesString
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

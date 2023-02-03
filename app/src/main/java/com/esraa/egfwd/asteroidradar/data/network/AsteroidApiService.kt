@@ -1,7 +1,7 @@
 package com.esraa.egfwd.asteroidradar.data.network
 
-import com.esraa.egfwd.asteroidradar.Constants.API_KEY
-import com.esraa.egfwd.asteroidradar.Constants.BASE_URL
+import com.esraa.egfwd.asteroidradar.utils.Constants.API_KEY
+import com.esraa.egfwd.asteroidradar.utils.Constants.BASE_URL
 import com.squareup.moshi.Moshi
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory

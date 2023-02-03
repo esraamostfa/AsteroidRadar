@@ -6,11 +6,8 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.esraa.egfwd.asteroidradar.AsteroidApplication
 import com.esraa.egfwd.asteroidradar.R
 import com.esraa.egfwd.asteroidradar.data.repository.AsteroidRepository
@@ -44,12 +41,13 @@ class MainFragment : Fragment()  {
         })
         binding.asteroidRecycler.adapter = adapter
 
-        viewModel.navigateToSelectedAsteroid.observe(viewLifecycleOwner, Observer {
+        viewModel.navigateToSelectedAsteroid.observe(viewLifecycleOwner) {
             it?.let {
-                this.findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(it))
+                this.findNavController()
+                    .navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(it))
                 viewModel.displayAsteroidDetailsComplete()
             }
-        })
+        }
 
 
         setupMenu()
