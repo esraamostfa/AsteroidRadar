@@ -4,5 +4,16 @@
     <string name="next_week_asteroids">كويكبات الأسبوع القادم</string>
     <string name="today_asteroids">كويكبات اليوم</string>
     <string name="saved_asteroids">الكويكبات المحفوظة</string>
+    <string name="close_approach_data_title">تاريخ الاقتراب</string>
+    <string name="absolute_magnitude_title">الحجم المطلق</string>
+    <string name="estimated_diameter_title">القطر المقدر</string>
+    <string name="relative_velocity_title">السرعة النسبية</string>
+    <string name="distance_from_earth_title">المسافة من الأرض</string>
+    <string name="astronomical_unit_format">%s  وحدة فلكية</string>
+    <string name="km_unit_format">%s كم</string>
+    <string name="km_s_unit_format">%s كم\\ث</string>
     <string name="image_of_the_day">صورة اليوم</string>
+    <string name="astronomica_unit_explanation">
+        الوحدة الفلكيةهي وحدة طول، المسافة من الأرض للشمس وتساوي حوالي 150 مليون كيلوميتر (93 مليون ميل)
+         </string>
 </resources>
