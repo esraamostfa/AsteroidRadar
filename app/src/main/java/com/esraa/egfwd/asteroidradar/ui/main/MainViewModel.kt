@@ -17,17 +17,26 @@ class MainViewModel(private val repository: AsteroidRepository)  : ViewModel() {
 
      val asteroids = repository.asteroids
 
+    enum class APIStatus{LOADING, ERROR, DONE}
+
+    private val _apiStatus = MutableLiveData<APIStatus>()
+    val apiStatus : LiveData<APIStatus>
+    get() = _apiStatus
+
     init {
         getImageOfDay()
         refreshAsteroids()
     }
 
     private fun refreshAsteroids() {
+        _apiStatus.value = APIStatus.LOADING
         viewModelScope.launch {
             try {
                 repository.refreshAsteroids()
+                _apiStatus.value = APIStatus.DONE
 
             } catch (e: java.lang.Exception) {
+                _apiStatus.value = APIStatus.ERROR
                 Timber.e(e.toString())
             }
         }

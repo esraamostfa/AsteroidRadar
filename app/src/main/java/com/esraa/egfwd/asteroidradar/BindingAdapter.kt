@@ -1,12 +1,17 @@
 package com.esraa.egfwd.asteroidradar
 
+import android.opengl.Visibility
+import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.esraa.egfwd.asteroidradar.data.local.DBAsteroid
 import com.esraa.egfwd.asteroidradar.ui.main.AsteroidRecyclerViewAdepter
+import com.esraa.egfwd.asteroidradar.ui.main.MainViewModel
 import com.squareup.picasso.Picasso
+import kotlin.reflect.jvm.internal.impl.descriptors.Visibilities
 
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
@@ -32,5 +37,14 @@ fun bindHazardousIcon(image: ImageView, asteroid: DBAsteroid) {
         image.setImageResource(R.drawable.ic_status_potentially_hazardous)
     } else {
         image.setImageResource(R.drawable.ic_status_normal)
+    }
+}
+
+@BindingAdapter("apiStatus")
+fun ProgressBar.setVisibility(apiStatus: MainViewModel.APIStatus) {
+    if(apiStatus== MainViewModel.APIStatus.LOADING) {
+        visibility = View.VISIBLE
+    } else {
+        visibility = View.GONE
     }
 }
