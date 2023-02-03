@@ -15,7 +15,7 @@
             android:background="@color/app_background">
 
             <ImageView
-                android:id="@+id/activity_main_image_of_the_day"
+                android:id="@+id/asteroid_status_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
@@ -31,7 +31,7 @@
                 android:padding="@dimen/basic_margin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_main_image_of_the_day">
+                app:layout_constraintTop_toBottomOf="@+id/asteroid_status_image">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -93,7 +93,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/basic_margin"
-                            app:srcCompat="@drawable/ic_help_circle" />
+                            app:srcCompat="@drawable/ic_help_circle"
+                            android:contentDescription="@string/astronomical_unit_explanation_button"/>
 
                     </LinearLayout>
 

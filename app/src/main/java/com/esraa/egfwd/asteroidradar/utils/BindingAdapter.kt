@@ -1,6 +1,5 @@
 package com.esraa.egfwd.asteroidradar
 
-import android.opengl.Visibility
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -12,7 +11,6 @@ import com.esraa.egfwd.asteroidradar.data.local.DBAsteroid
 import com.esraa.egfwd.asteroidradar.ui.main.AsteroidRecyclerViewAdepter
 import com.esraa.egfwd.asteroidradar.ui.main.MainViewModel
 import com.squareup.picasso.Picasso
-import kotlin.reflect.jvm.internal.impl.descriptors.Visibilities
 
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
@@ -36,17 +34,20 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<DBAsteroid>?) {
 fun bindHazardousIcon(image: ImageView, asteroid: DBAsteroid) {
     if (asteroid.isPotentiallyHazardous) {
         image.setImageResource(R.drawable.ic_status_potentially_hazardous)
+        image.contentDescription = image.context.getString(R.string.potentially_hazardous_asteroid_image)
+
     } else {
         image.setImageResource(R.drawable.ic_status_normal)
+        image.contentDescription = image.context.getString(R.string.not_hazardous_asteroid_image)
     }
 }
 
 @BindingAdapter("apiStatus")
 fun ProgressBar.setVisibility(apiStatus: MainViewModel.APIStatus) {
-    if(apiStatus== MainViewModel.APIStatus.LOADING) {
-        visibility = View.VISIBLE
+    visibility = if(apiStatus== MainViewModel.APIStatus.LOADING) {
+        View.VISIBLE
     } else {
-        visibility = View.GONE
+        View.GONE
     }
 }
 
@@ -54,8 +55,10 @@ fun ProgressBar.setVisibility(apiStatus: MainViewModel.APIStatus) {
 fun bindAsteroidStatusImage(image: ImageView, asteroidStatus: Boolean) {
     if (asteroidStatus) {
         image.setImageResource(R.drawable.asteroid_hazardous)
+        image.contentDescription = image.context.getString(R.string.potentially_hazardous_asteroid_image)
     } else {
         image.setImageResource(R.drawable.asteroid_safe)
+        image.contentDescription = image.context.getString(R.string.not_hazardous_asteroid_image)
     }
 }
 
