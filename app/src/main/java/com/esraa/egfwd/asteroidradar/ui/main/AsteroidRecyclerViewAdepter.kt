@@ -7,11 +7,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.esraa.egfwd.asteroidradar.data.local.DBAsteroid
 import com.esraa.egfwd.asteroidradar.databinding.AsteroidItemBinding
+import com.esraa.egfwd.asteroidradar.databinding.AsteroidItemBindingImpl
 
 class AsteroidRecyclerViewAdepter(private val clickListener: AsteroidClickListener): ListAdapter<DBAsteroid, AsteroidRecyclerViewAdepter.ViewHolder>(AsteroidDiffCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(AsteroidItemBinding.inflate(LayoutInflater.from(parent.context)))
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = AsteroidItemBindingImpl.inflate(inflater,  parent, false)
+        return ViewHolder(binding)
     }
 
 

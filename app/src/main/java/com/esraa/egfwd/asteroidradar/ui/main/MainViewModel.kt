@@ -25,9 +25,8 @@ class MainViewModel(private val repository: AsteroidRepository)  : ViewModel() {
 
     init {
         refreshImageOfDay()
-        getAsteroids(AsteroidRepository.AsteroidsFilter.NEXT_WEEK)
         refreshAsteroids()
-    }
+         }
 
     private fun refreshAsteroids() {
         _apiStatus.value = APIStatus.LOADING
@@ -35,6 +34,7 @@ class MainViewModel(private val repository: AsteroidRepository)  : ViewModel() {
             try {
                 repository.refreshAsteroids()
                 _apiStatus.value = APIStatus.DONE
+                getAsteroids(AsteroidRepository.AsteroidsFilter.NEXT_WEEK)
 
             } catch (e: java.lang.Exception) {
                 _apiStatus.value = APIStatus.ERROR
@@ -52,7 +52,6 @@ class MainViewModel(private val repository: AsteroidRepository)  : ViewModel() {
 
      fun filterAsteroids(filter: AsteroidRepository.AsteroidsFilter) {
         getAsteroids(filter)
-
     }
 
     private fun refreshImageOfDay() {
